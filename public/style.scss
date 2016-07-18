@@ -1,0 +1,283 @@
+@import url(https://fonts.googleapis.com/css?family=Libre+Franklin:400,700,200,300|Syncopate:400,700);
+@import url(https://fonts.googleapis.com/css?family=Libre+Franklin:400,700,200,300,900|Abel|Advent+Pro|Athiti);
+/* Global Variables */
+$bg_grey: #333;
+$fg_white: #fff;
+$red: #4ca54c;
+
+$tb: #345;
+
+/*color sceme 2 */
+$ms_lblue: #DFDCE3;
+$ms_dblue: #465C8B;
+$ms_vgreen: #93C178;
+$ms_darkGreen: rgba(0,77,1,0.8);
+$ms_lightgreen: rgba(147,193,120,0.2);
+$ms_yellow: #F7EF6A;
+$ms_brightYellow: #F8FFA2;
+$ms_yellow_faded: rgba(247,239,106, 0.6);
+$ms_veryLightBlue: rgba(255,255,255,0.7);
+
+
+/*Global Mixins */
+
+/*set BG and FG */
+@mixin gwColor{
+     background: $bg_grey;
+     color: $fg_white;
+}
+
+/* Set Browser defaults  ----------------> */
+
+/* Remove all browser specific padding & margins */
+* {
+     margin: 0;
+     padding: 0;
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+::selection {
+     @include gwColor;
+}
+
+::-moz-selection {
+     @include gwColor;
+}
+
+/* Enable absolute postionining of elements within containers */
+div, article, section, header, footer, nav, figure, li {
+     position: relative;
+}
+
+
+/* Typography ------------------------------> */
+
+body, input, textarea {
+     color: $bg_grey;
+}
+
+body, h2, h3 {
+     font-family: "Abel", veranda, arail, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+     font-weight: normal;
+}
+
+/* */
+h1 {
+     background: $red;
+     color: $fg_white;
+     display: inline-block;
+     margin-bottom: 1em;
+     padding: .5em 1em;
+}
+
+h2 {
+     color: $fg_white;
+     font-weight: 900;
+     font-size: 4em;
+     letter-spacing: 3px;
+     line-height: 1em;
+
+}
+
+h3 {
+     font-size: 2.25em;
+     font-weight: 200;
+     letter-spacing: 1px;
+     line-height: 1em;
+     padding: .5em 0 .25em 0;
+}
+
+a {
+     border-bottom: 1px solid rgba(0,0,0,0.2);
+     color: $bg_grey;
+     text-decoration: none;
+     -moz-transition:border-color 0.2s ease-in-out;
+     -ms-transition:border-color 0.2s ease-in-out;
+     -o-transition:border-color 0.2s ease-in-out;
+     transition:border-color 0.2s ease-in-out;
+}
+
+a:hover {
+     border-color: $red;
+}
+
+section.intro div.summary p a {
+     color: $fg_white;
+}
+
+/* Add red top border to both cutoffs */
+div.android p:last-child,
+section.intro div.summary p:last-child {
+     border-top: 1px solid $red;
+     margin-top: 1em;
+     padding-top: 1.5em;
+}
+
+
+p, li {
+     font-size: 1em;
+     font-weight: 400;
+     line-height: 1.5em;
+     padding: .5em 0;
+}
+
+/* Layout ---------------------> */
+
+html {
+     background: $ms_lightgreen;
+     padding: 5%;
+}
+
+body {
+     background: $ms_vgreen;
+}
+
+div.page-wrapper {
+     z-index: 2;
+}
+
+/* Pad all elements in the intro by 5% */
+section.intro{
+     padding: 5%;
+}
+
+section.intro div.summary{
+     color: $fg_white;
+     padding: 15% 0;
+}
+
+/* Really cool drag off the page style thing */
+section.intro div.summaryDeet{
+     background: $ms_veryLightBlue;
+     color: $bg_grey;
+     padding: 5% 5% 5% 30%;
+     margin-left: -30%;
+}
+
+div.main {
+     padding: 5%;
+}
+
+/*Github abounts */
+aside.projects {
+     background: $ms_brightYellow;
+     padding: 5%;
+}
+
+aside.projects ul{
+     padding: .5em 0 2em 0;
+}
+
+aside.projects ul li {
+     list-style: none;
+     margin: 0;
+     padding:0 0 0.825em 0
+}
+
+footer{
+     /* to go here when ready */
+}
+
+div.front-end{
+     color: $fg_white;
+     padding: 5%;
+}
+
+div.back-end{
+     color: $fg_white;
+     background: $red;
+     padding: 5%;
+}
+
+div.android{
+     background: $ms_veryLightBlue;
+     padding: 5%;
+     margin-top: 10%;
+}
+
+/* Media Queries - mobile first approach */
+@media screen and (min-width:1px){
+     font-size: 85%;
+}
+
+@media screen and (min-width:650px){
+     h2 {font-size: 8em;}
+
+     section.intro{
+          width: 66.6%;
+     }
+
+     aside.projects {
+          position: absolute;
+          right: 0;
+          top: 2.5%;
+          width: 32.75%;
+     }
+
+     /* postioning the backpart using z-index */
+     div.nullBg{
+          background: $ms_darkGreen;
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          top: 0;
+          width: 30%;
+          z-index: 1;
+     }
+
+     div.front-end{
+          float: left;
+          width: 50%;
+     }
+
+     div.back-end{
+          float: left;
+          width: 49%;
+     }
+
+     /* push collapsed div below floated elements */
+     div.android{
+          clear: left;
+          width: 69%;
+          margin-top: 3%;
+     }
+}
+
+@media screen and (min-width: 700px){
+     body{
+          font-size: 90%;
+     }
+}
+
+@media screen and (min-width: 800px){
+     body{
+          font-size: 100%;
+     }
+}
+
+@media screen and (min-width: 900px){
+     body{
+          font-size: 120%;
+     }
+}
+
+@media screen and (min-width: 1200px){
+     body{
+          font-size: 150%;
+     }
+}
+
+/*Clearfix */
+cf:after{
+     display: block;
+     height:0;
+     font-size: 0;
+     content: "";
+     clear: both;
+     visibility: hidden;
+}
